@@ -23,12 +23,11 @@ class LocationListInterface extends React.Component {
     const locations = this.state.locations.slice();
     locations.push(currentAddressText);
     this.setState({locations: locations});
-    console.log(this.state);
   }
   
   render() {
     let locationButtonArray = this.state.locations.map( address => 
-      <RadioButton value={address} label={address} style={styles.radioButton} />
+      <RadioButton value={address} label={address} key={address} style={styles.radioButton} />
     )
     return (
       <div>

@@ -14,10 +14,6 @@ Axios.get('http://autocomplete.geocoder.cit.api.here.com/6.2/suggest.json?app_id
   });
 
 class AddressEntryComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   handleClick() {
     const currentAddressText = document.getElementById('addressTextField').value;
     this.props.onSubmitAddress(currentAddressText);

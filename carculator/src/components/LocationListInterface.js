@@ -1,13 +1,21 @@
 import React from 'react';
-//import LocationList from './LocationList';
 import AddressEntryComponent from './AddressEntryComponent';
-import { List, ListItem } from 'material-ui/List';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+
+const styles = {
+  block: {
+    maxWidth: 250,
+  },
+  radioButton: {
+    marginBottom: 16,
+  },
+};
 
 class LocationListInterface extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locations: ["2908 SE Bingham Court", "2901 Oak Street", "124 W Terrace"],
+      locations: [],
     }
   }
   
@@ -19,15 +27,17 @@ class LocationListInterface extends React.Component {
   }
   
   render() {
-    let locationListArray = this.state.locations.map( address => <ListItem primaryText={address} key={address}/>)
+    let locationButtonArray = this.state.locations.map( address => 
+      <RadioButton value={address} label={address} style={styles.radioButton} />
+    )
     return (
       <div>
         <AddressEntryComponent
           onSubmitAddress={this.onSubmitAddress}
         />
-        <List>
-          {locationListArray}
-        </List>
+        <RadioButtonGroup name="locationsList" labelPosition="left" style={styles.block}>
+          {locationButtonArray}
+        </RadioButtonGroup>
       </div>
     );
   }
